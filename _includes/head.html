@@ -3,7 +3,43 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <!-- SEO -->
-  {% seo %}
+  {% if page.seo-page-title != '' %}
+      <title>{{ page.seo-page-title }}</title>
+      <meta property="og:title" content="{{ page.seo-page-title }}">
+  {% else %}
+      <title>{{ page.title }}</title>
+      <meta property="og:title" content="{{ page.title }}">
+  {% endif %}
+  {% if page.meta-description != '' %}
+      <meta name="description" content="{{ page.meta-description }}">
+      <meta property="og:description" content="{{ page.meta-description }}">
+  {% else %}
+      <meta name="description" content="{{ site.description }}">
+      <meta property="og:description" content="{{ site.description }}">
+  {% endif %}
+  <link rel="canonical" href="{{ page.url | prepend: site.url }}">
+  <meta property="og:url" content="{{ page.url | prepend: site.url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <script type="application/ld+json">
+    {
+      "name": "{{site.title}}",
+      "description": "{{site.description}}",
+      "author": {
+        "@type": "Person",
+        "name": "Zen"
+      },
+      "@type": "WebSite",
+      "url": "{{site.url}}",
+      "publisher":null,
+      "image":null,
+      "headline":"{{site.description}}",
+      "dateModified": null,
+      "datePublished": null,
+      "sameAs": null,
+      "mainEntityOfPage": null,
+      "@context": "http://schema.org"
+    }
+  </script>
   <!-- CSS -->
   {% if page.type == 'landing-page' %}
   <link rel="stylesheet" type="text/css" href="{{ "/assets/css/landing-page.css" | prepend: site.baseurl_root }}?{{site.time | date: '%s%N'}}">
