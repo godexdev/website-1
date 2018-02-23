@@ -21,24 +21,21 @@
   <meta property="og:url" content="{{ page.url | prepend: site.url }}">
   <meta property="og:site_name" content="{{ site.title }}">
   <script type="application/ld+json">
-    {
-      "name": "{{site.title}}",
-      "description": "{{site.description}}",
-      "author": {
-        "@type": "Person",
-        "name": "Zen"
-      },
-      "@type": "WebSite",
-      "url": "{{site.url}}",
-      "publisher":null,
-      "image":null,
-      "headline":"{{site.description}}",
-      "dateModified": null,
-      "datePublished": null,
-      "sameAs": null,
-      "mainEntityOfPage": null,
-      "@context": "http://schema.org"
-    }
+  {
+    "@context": "http://schema.org",
+    "@type": "Corporation",
+    "name": "ZenCash",
+    "alternateName": "ZenSystem",
+    "url": "{{site.url}}",
+    "logo": "",
+    "sameAs": [
+      "{{site.links.facebook}}",
+      "{{site.links.twitter}}",
+      "{{site.links.youtube}}",
+      "{{site.links.linkedin}}",
+      "{{site.links.github}}"
+    ]
+  }
   </script>
   <!-- CSS -->
   {% if page.type == 'landing-page' %}
